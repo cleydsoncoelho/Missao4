@@ -1,37 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Editora } from './editora'; // Certifique-se de que o caminho esteja correto
+import { Editora } from './editora';
 
-// Definir a variável editoras, como Array<Editora>, contendo ao menos três elementos, no formato JSON
 const editoras: Array<Editora> = [
-    { codEditora: 1, nome: "Companhia das Letras" },
-    { codEditora: 2, nome: "Boitempo Editorial" },
-    { codEditora: 3, nome: "Editora Martin Claret" },
-    { codEditora: 4, nome: "Leya" },
-    { codEditora: 5, nome: "Civilização Brasileira" },
-    { codEditora: 6, nome: "Edições Loyola" },
-    { codEditora: 7, nome: "Editora Vozes" },
-    { codEditora: 8, nome: "Paz e Terra" },
-    { codEditora: 9, nome: "Graal" },
-    { codEditora: 10, nome: "Editora Gallimard" },
-    { codEditora: 11, nome: "Paz e Terra" },
-    { codEditora: 12, nome: "Paz e Terra" },
-    { codEditora: 13, nome: "Editora Abril" },
-    { codEditora: 14, nome: "Editora 34" },
-    { codEditora: 15, nome: "Editora Nova Fronteira" },
+    new Editora(1, "Companhia das Letras"),
+    new Editora(2, "Boitempo Editorial"),
+    new Editora(3, "Editora Martin Claret"),
+    new Editora(4, "Leya"),
+    new Editora(5, "Civilização Brasileira"),
+    new Editora(6, "Edições Loyola"),
+    new Editora(7, "Editora Vozes"),
+    new Editora(8, "Paz e Terra"),
+    new Editora(9, "Graal"),
+    new Editora(10, "Editora Gallimard"),
+    new Editora(11, "Paz e Terra"),
+    new Editora(12, "Paz e Terra"),
+    new Editora(13, "Editora Abril"),
+    new Editora(14, "Editora 34"),
+    new Editora(15, "Editora Nova Fronteira")
 ];
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControleEditoraService {
-  // Método para retornar todas as editoras
   getEditoras(): Array<Editora> {
     return editoras;
   }
 
-  // Método para retornar o nome da editora pelo código
   getNomeEditora(codEditora: number): string | undefined {
-    const filteredEditoras = editoras.filter((editora) => editora.codEditora === codEditora);
-    return filteredEditoras.length > 0 ? filteredEditoras[0].nome : undefined;
+    const editora = editoras.find(e => e.codEditora === codEditora);
+    return editora?.nome;
   }
 }

@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ControleEditoraService } from '../controle-editora.service';
 import { ControleLivrosService } from '../controle-livros.service';
+import { Livro } from '../livro';
+import { Editora } from '../editora';
 
 @Component({
-  selector: 'app-livro-lista', // Seletor deve ser exatamente assim
+  selector: 'app-livro-lista',
   templateUrl: './livro-lista.component.html',
-  styleUrls: ['./livro-lista.component.css'],
+  styleUrls: ['./livro-lista.component.css']
 })
 export class LivroListaComponent implements OnInit {
-  public editoras: Array<any> = [];
-  public livros: Array<any> = [];
+  public editoras: Array<Editora> = [];
+  public livros: Array<Livro> = [];
 
   constructor(
     private servEditora: ControleEditoraService,
@@ -24,13 +26,14 @@ export class LivroListaComponent implements OnInit {
   }
 
   excluir = (codigo: number): void => {
-    this.servLivros.excluir(codigo);
-    this.servLivros.obterLivros().then((livros) => {
-      this.livros = livros;
+    this.servLivros.excluir(codigo).then(() => {
+      this.servLivros.obterLivros().then((livros) => {
+        this.livros = livros;
+      });
     });
   };
 
-  obterNome = (codEditora: number): string | undefined => {
-    return this.servEditora.getNomeEditora(codEditora);
+  obterNome = (codEditora: number): string => {
+    return this.servEditora.getNomeEditora(codEditora) || 'Editora não encontrada';
   };
 }
