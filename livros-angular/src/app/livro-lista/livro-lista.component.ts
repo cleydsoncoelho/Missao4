@@ -7,7 +7,7 @@ import { Editora } from '../editora';
 @Component({
   selector: 'app-livro-lista',
   templateUrl: './livro-lista.component.html',
-  styleUrls: ['./livro-lista.component.css']
+  styleUrls: ['./livro-lista.component.css'],
 })
 export class LivroListaComponent implements OnInit {
   public editoras: Array<Editora> = [];
@@ -34,6 +34,8 @@ export class LivroListaComponent implements OnInit {
   };
 
   obterNome = (codEditora: number): string => {
-    return this.servEditora.getNomeEditora(codEditora) || 'Editora não encontrada';
+    return (
+      this.servEditora.getNomeEditora(codEditora) || 'Editora não encontrada'
+    );
   };
 }

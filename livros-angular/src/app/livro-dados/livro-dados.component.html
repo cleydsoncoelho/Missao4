@@ -1,36 +1,51 @@
-<div class="container">
-  <h2>Dados do Livro</h2>
-  <form (submit)="incluir()">
+<div class="container mt-4">
+  <h2>Cadastro de Livro</h2>
+  <form (submit)="incluir()" ngNativeValidate>
     <div class="form-group">
       <label for="titulo">Título:</label>
-      <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="livro.titulo" required>
+      <input
+        type="text"
+        id="titulo"
+        [(ngModel)]="livro.titulo"
+        name="titulo"
+        class="form-control"
+        required
+      />
     </div>
-
-    <div class="form-group">
-      <label for="ano">Ano:</label>
-      <input type="text" class="form-control" id="ano" name="ano" [(ngModel)]="livro.ano" required>
-    </div>
-
     <div class="form-group">
       <label for="resumo">Resumo:</label>
-      <textarea class="form-control" id="resumo" name="resumo" [(ngModel)]="livro.resumo" required></textarea>
+      <textarea
+        id="resumo"
+        [(ngModel)]="livro.resumo"
+        name="resumo"
+        class="form-control"
+        required
+      ></textarea>
     </div>
-
     <div class="form-group">
       <label for="editora">Editora:</label>
-      <select class="form-control" id="editora" name="codEditora" [(ngModel)]="livro.codEditora" required>
-        <option value="">Selecione uma editora</option>
+      <select
+        id="editora"
+        [(ngModel)]="livro.codEditora"
+        name="editora"
+        class="form-control"
+        required
+      >
         <option *ngFor="let editora of editoras" [value]="editora.codEditora">
           {{ editora.nome }}
         </option>
       </select>
     </div>
-
     <div class="form-group">
-      <label for="autores">Autores (um por linha):</label>
-      <textarea class="form-control" id="autores" name="autores" [(ngModel)]="livro.autores" required></textarea>
+      <label for="autores">Autores (1 por linha):</label>
+      <textarea
+        id="autores"
+        [(ngModel)]="autoresForm"
+        name="autores"
+        class="form-control"
+        required
+      ></textarea>
     </div>
-
     <button type="submit" class="btn btn-primary">Salvar</button>
   </form>
 </div>

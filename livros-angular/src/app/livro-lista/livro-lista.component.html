@@ -1,6 +1,6 @@
-<div>
+<div class="container mt-4">
   <h2>Lista de Livros</h2>
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Título</th>
@@ -23,7 +23,9 @@
           </ul>
         </td>
         <td>
-          <button (click)="excluir(livro.codigo)">Excluir</button>
+          <button (click)="excluir(livro.codigo)" class="btn btn-danger">
+            Excluir
+          </button>
         </td>
       </tr>
     </tbody>
